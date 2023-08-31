@@ -1,13 +1,26 @@
+@import "/src/variables/fonts.module.scss";
+.menuContainer {
+    margin: 1em;
+  .navigation {
+    background-color: grey;
+    min-width: 3em;
+    filter: blur();
+    ul {
+      display: flex;
+      justify-content: center;
+      
 
-
-.navigation{
-    ul{
-        li{
-            list-style: none;
-            a{
-                text-decoration: none;
-                color: white;
-            }
+      li {
+        list-style: none;
+        a {
+          text-decoration: none;
+          color: $primmary-font;
+          img{
+            width: 2em;
+            color: blue;
+            background-color: blue};
         }
+      }
     }
+  }
 }
