@@ -3,9 +3,9 @@ import style from './style.module.scss'
 function CityName({City}) {
     return (
         <div className={style.cityContainer}>
-            {City}
+        {City}
         </div>
     );
 }
 
-export default CityName;
+export default CityName

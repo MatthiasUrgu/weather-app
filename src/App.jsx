@@ -1,38 +1,38 @@
+import { ApiWeather } from "API/API";
+import { useState } from "react";
 import style from "./Style.module.scss";
-/* import {API} from 'API/API'
- */
-import Menu from "components/Menu/Menu";
 import CityName from "components/CityName/CityName";
-import Temperature from "components/temperature/Temperature";
-import WeatherImg from "components/weatherImg/WeatherImg";
-/* import axios from "axios"; */
-import { API_key,API_BASE_LInk } from "API/API_Key";
+import Temperature from "components/Temperature/Temperature";
+
 function App() {
+  const [isInput, setIsInput] = useState('');
+  const [isVille,setIsVille] = useState ('')
+  const [isTemperature,setIsTemperature] = useState ('')
+  function InputValue(e) {
+    setIsInput(e.target.value);
+    
+    console.log(isInput);
+  }
 
-let city = 'Paris'
-
-
-const response =`${API_BASE_LInk}q=${city}&appid=${API_key}`
-
-
-
-/*
-  let temperature = response.data.main.temp
-  let celcius = temperature - 273.15;
+  async function City() {
+    const ville =  await ApiWeather.WeatherCity(isInput)
+    const temperature = await ApiWeather.WeatherTemperature(isInput)
+   
+    setIsVille(ville)
+    setIsTemperature(temperature)
+  }
   
-  celcius.toFixed(1)
- */
-
-  
-
   return (
     <section className={style.container}>
-      <Temperature Degree=''/>
-      <CityName City={city}/>
-      <WeatherImg />
-      <Menu />
+      <input type="text" value={isInput} onChange={InputValue} />
+
+      <button type="submit" onClick={City}>
+        submit
+      </button>
+      <CityName City={isVille}/>
+      <Temperature Celcius={isTemperature}/>
     </section>
   );
 }
-export {response}
+
 export default App;
