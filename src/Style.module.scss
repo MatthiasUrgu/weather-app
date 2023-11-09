@@ -1,6 +1,42 @@
 .container{
    height: 100vh;
-   overflow-y: hidden;
+   overflow: hidden;
+   color: #fff;
     
+
+   video{
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+   }
     
-}
+   .dataSearch{
+      position: absolute;
+      width: 100%;
+      top: 0;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      
+      
+   }
+  
+   .dataFind{
+      position: absolute;
+      top: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      
+   }
+   .lastBLock{
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      
+   }
+   }

@@ -1,0 +1,12 @@
+.temperature {
+  position: relative;
+  top: 200px;
+  display: flex;
+
+  .temperatureNumber {
+    font-size: 5em;
+  }
+  .temperatureUnit {
+    font-size: 2em;
+  }
+}

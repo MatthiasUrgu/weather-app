@@ -1,9 +1,15 @@
+import style from "./TemperatureStyle.module.scss";
 function Temperature({ Celcius }) {
   return (
-    <>
-      { Celcius &&  <span>{Celcius} <span>C°</span></span> }
-    </>
-  )
+    <div>
+      {Celcius && (
+        <div className={style.temperature}>
+          <span className={style.temperatureNumber}>{Celcius.toFixed(1)} </span>
+          <span className={style.temperatureUnit}>°</span>
+        </div>
+      )}
+    </div>
+  );
 }
 
-export default Temperature
+export default Temperature;

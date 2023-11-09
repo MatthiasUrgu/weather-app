@@ -1,4 +1,4 @@
-import style from './style.module.scss'
+import style from './CityNameStyle.module.scss'
 
 function CityName({City}) {
     return (
