@@ -1,8 +1,8 @@
 function Temperature({ Celcius }) {
   return (
-    <div>
-        {Celcius} <span>C°</span>
-    </div>
+    <>
+      { Celcius &&  <span>{Celcius} <span>C°</span></span> }
+    </>
   )
 }
 
