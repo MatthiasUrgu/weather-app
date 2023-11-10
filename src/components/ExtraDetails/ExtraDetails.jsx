@@ -13,7 +13,7 @@ export default function ExtraDetails({Humidity,Wind,Max,Min}) {
         </div>
         <div className={style.case}>
             <img src="" alt="minMax" />
-            <span>{Min} - {Max}</span>
+            <span>{Min}° - {Max}°</span>
         </div>
 
     </section>

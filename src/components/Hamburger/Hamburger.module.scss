@@ -1,0 +1,20 @@
+$primarySpan:#fff;
+
+.hamburgerSearch{
+display: flex;
+flex-direction: column;
+.hamburgerSpanFirst{
+    height: 0.3em;
+    width: 2em;
+    border-radius: 1em;
+    background-color: $primarySpan;
+
+    margin-bottom: 0.4em;
+}
+.hamburgerSpanSecond{
+    height: 0.3em;
+    width: 1em;
+    border-radius: 1em;
+    background-color: $primarySpan;
+}
+}

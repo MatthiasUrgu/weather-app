@@ -1,3 +1,5 @@
+
+$primaryColor: #fff;
 .container{
    height: 100vh;
    overflow: hidden;
@@ -19,8 +21,24 @@
       display: flex;
       justify-content: center;
       flex-direction: column;
+
+      input{
+         background-color: rgba($color: $primaryColor, $alpha: 0.3);
+         color: $primaryColor;
+         border: none;
+         font-size: 2em;
+      }
+      button{
+         position: absolute;
+         right: 0 ;
+      }
       
       
+      .hamburger{
+         position: relative;
+         top: 15em;
+        
+      }
    }
   
    .dataFind{

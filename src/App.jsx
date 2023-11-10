@@ -6,6 +6,7 @@ import Temperature from "components/Temperature/Temperature";
 import DateTime from "components/DateTime/DateTime";
 import video from "assets/videos/heavy-rain.mp4"
 import ExtraDetails from "components/ExtraDetails/ExtraDetails";
+import Hamburger from "components/Hamburger/Hamburger";
 function App() {
 
   /* States */
@@ -45,9 +46,14 @@ function App() {
       <div className={style.data}>
         
         <div className={style.dataSearch}>
+          
+          <div className={style.hamburger}>
+            <Hamburger />
+          </div>
+
           <input type="text" value={isInput} onChange={InputValue} />
           <button type="submit" onClick={City}>
-            submit
+            Go!
           </button>
         </div>
         
