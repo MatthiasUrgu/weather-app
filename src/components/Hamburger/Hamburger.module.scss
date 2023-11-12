@@ -3,11 +3,14 @@ $primarySpan:#fff;
 .hamburgerSearch{
 display: flex;
 flex-direction: column;
+
+
 .hamburgerSpanFirst{
     height: 0.3em;
     width: 2em;
     border-radius: 1em;
     background-color: $primarySpan;
+    transition: 1s;
 
     margin-bottom: 0.4em;
 }
@@ -16,5 +19,8 @@ flex-direction: column;
     width: 1em;
     border-radius: 1em;
     background-color: $primarySpan;
+    transition: 1s;
 }
+
 }
+

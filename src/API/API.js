@@ -53,7 +53,7 @@ export class ApiWeather {
           return res.json();
         })
         .then((data) => {
-          console.log('**Temp-Min**', data.main.temp_min);
+          
           return data.main.temp_min;
         });
     }
@@ -64,7 +64,6 @@ export class ApiWeather {
           return res.json();
         })
         .then((data) => {
-          console.log('**Temp-max**', data.main.temp_max);
           return data.main.temp_max;
         });
     }
