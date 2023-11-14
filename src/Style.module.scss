@@ -1,15 +1,20 @@
+@import './variables/font.scss';
 
 $primaryColor: #fff;
+
 .container{
    height: 100vh;
    overflow: hidden;
-   color: #fff;
+   color: $primaryColor;
+   font-family:$primmaryFont;
+
     
 
    video{
       height: 100%;
       width: 100%;
       object-fit: cover;
+      z-index: -1;
    
       
    }
@@ -20,6 +25,8 @@ $primaryColor: #fff;
       top: 2em;
       display: flex;
       justify-content: center;
+      z-index: 2;
+     
       
 
       input{
@@ -53,6 +60,7 @@ $primaryColor: #fff;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      z-index: 1;
       
    }
    .lastBLock{
