@@ -12,13 +12,14 @@ import Hamburger from "components/Hamburger/Hamburger";
 import WeatherLogo from "components/WeatherLogo/WeatherLogo";
 function App() {
   /* States */
-  const [isInput, setIsInput] = useState("Rome");
+  const [isInput, setIsInput] = useState("namur");
   const [isVille, setIsVille] = useState("");
   const [isTemperature, setIsTemperature] = useState("");
   const [isHumidity, setIsHumidity] = useState("");
   const [isWind, setIsWind] = useState("");
   const [isMax, setIsMax] = useState("");
   const [isMin, setIsMin] = useState("");
+  const [meteo,setMeteo] = useState("")
 
   /* API */
   async function City() {
@@ -28,15 +29,22 @@ function App() {
     const wind = await ApiWeather.WeatherWind(isInput);
     const max = await ApiWeather.WeatherMin(isInput);
     const min = await ApiWeather.WeatherMax(isInput);
+    const weatherData = await ApiWeather.WeatherImage(isInput);
+        
+    
+    console.log("**meteoLogo**", weatherData);
+    console.log("**Logo**", meteo);
+        
     setIsVille(ville);
     setIsTemperature(temperature);
     setIsHumidity(humidity);
     setIsWind(wind);
     setIsMax(max);
     setIsMin(min);
+    setMeteo(weatherData);
   }
 
-  /* Animations FramerMotion  */
+  /* Animation FramerMotion  */
   const SearchBarControls = useAnimation();
   const HamburgerControls = useAnimation();
 
@@ -98,7 +106,7 @@ function App() {
         </div>
         {/******* All components  *******/}
         <div className={style.dataFind}>
-          <WeatherLogo Validate={isInput} CityName={isInput} />
+          <WeatherLogo  LogoMeteo={meteo} CityName={isInput}/>
           <CityName City={isVille} />
           <Temperature Celcius={isTemperature} />
           <DateTime City={isVille} />
