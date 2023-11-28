@@ -1,5 +1,8 @@
 .date{
-    position: relative;
-    top: 200px;
+    display: flex;
     font-size: 1em;
+    justify-content: space-between;
+    .dateTime{
+        margin-right: 1em;
+    }
 }

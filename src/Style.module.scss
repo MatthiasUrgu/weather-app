@@ -1,25 +1,26 @@
+@import './variables/font.scss';
 
 $primaryColor: #fff;
+
 .container{
    height: 100vh;
-   overflow: hidden;
-   color: #fff;
+   color: $primaryColor;
+   font-family:$primmaryFont;
+   background-color: black;
+   overflow:hidden;
+
     
 
-   video{
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-   
-      
-   }
+  
     
    .dataSearch{
-      position: absolute;
-      width: 100%;
-      top: 2em;
+      
       display: flex;
       justify-content: center;
+      margin-top: 3em;
+      z-index: 9;
+      
+     
       
 
       input{
@@ -38,27 +39,20 @@ $primaryColor: #fff;
       }
       
       
-      .hamburger{
-      position: relative;
-         
-        
-      }
+      
    }
   
    .dataFind{
-      position: absolute;
-      top: 0;
-      width: 100%;
+      
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      z-index: 1;
       
    }
    .lastBLock{
-      position: absolute;
-      bottom: 0;
-      width: 100%;
+      
       display: flex;
       justify-content: center;
       
