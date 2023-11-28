@@ -75,7 +75,7 @@ export class ApiWeather {
           return res.json();
         })
         .then((data) => {
-          return data.weather[0].description
+          return data.weather[0].main
         });
     }
   }

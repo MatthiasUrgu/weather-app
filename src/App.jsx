@@ -10,9 +10,11 @@ import video from "assets/videos/heavy-rain.mp4";
 import ExtraDetails from "components/ExtraDetails/ExtraDetails";
 import Hamburger from "components/Hamburger/Hamburger";
 import WeatherLogo from "components/WeatherLogo/WeatherLogo";
+
+
 function App() {
   /* States */
-  const [isInput, setIsInput] = useState("namur");
+  const [isInput, setIsInput] = useState("");
   const [isVille, setIsVille] = useState("");
   const [isTemperature, setIsTemperature] = useState("");
   const [isHumidity, setIsHumidity] = useState("");
@@ -33,7 +35,7 @@ function App() {
         
     
     console.log("**meteoLogo**", weatherData);
-    console.log("**Logo**", meteo);
+   
         
     setIsVille(ville);
     setIsTemperature(temperature);
@@ -74,9 +76,12 @@ function App() {
     }
   }
 
+  /* WheaterLogo component  */
+
+  
   return (
     <section className={style.container}>
-      <video src={video} autoPlay loop muted></video>
+      
       <div className={style.data}>
         <div className={style.dataSearch}>
           {/******* SearchBar  *******/}
@@ -106,7 +111,7 @@ function App() {
         </div>
         {/******* All components  *******/}
         <div className={style.dataFind}>
-          <WeatherLogo  LogoMeteo={meteo} CityName={isInput}/>
+        <WeatherLogo LogoMeteo={meteo} City={isVille} />
           <CityName City={isVille} />
           <Temperature Celcius={isTemperature} />
           <DateTime City={isVille} />
