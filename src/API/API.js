@@ -44,7 +44,7 @@ export class ApiWeather {
         })
         .then((data) => {
       
-          return data.main.wind;
+          return data.wind.speed;
         });
     }
     /****** Min Temperature ******/

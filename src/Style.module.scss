@@ -6,19 +6,16 @@ $primaryColor: #fff;
    height: 100vh;
    color: $primaryColor;
    font-family:$primmaryFont;
-   background-color: black;
+   
    overflow:hidden;
 
-    
-
-  
     
    .dataSearch{
       
       display: flex;
       justify-content: center;
       margin-top: 3em;
-      z-index: 9;
+     
       
      
       
@@ -37,9 +34,7 @@ $primaryColor: #fff;
          color: $primaryColor;
 
       }
-      
-      
-      
+
    }
   
    .dataFind{
@@ -47,9 +42,7 @@ $primaryColor: #fff;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      z-index: 1;
-      
+
    }
    .lastBLock{
       

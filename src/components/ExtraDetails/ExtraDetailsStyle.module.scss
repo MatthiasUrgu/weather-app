@@ -1,11 +1,16 @@
 .extraDetailsContainer {
- 
+ margin-top: 2em;
   display: flex;
   justify-content: space-around;
+
+  
   .case {
     display: flex;
     align-items: center;
     flex-direction: column;
+    img{
+      max-width: 3em;
+    }
     span {
       margin-top: 1em;
     }

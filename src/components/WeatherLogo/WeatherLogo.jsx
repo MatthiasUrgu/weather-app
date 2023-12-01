@@ -1,3 +1,5 @@
+import style from "./WeatherLogoStyle.module.scss"
+
 /* imgWheater */
 import Rain from "assets/img/Rain.png"
 import ClearNight from "assets/img/ClearSkyNight.png"
@@ -35,13 +37,19 @@ function weather(){
   }else if(LogoMeteo.includes('Thunderstorm')){      
     return isDayTime ? <img src={ThunderStormDay} alt="dayClear" /> : <img src={ThunderStormNight} alt="nightClear" />;
 
-  }else if(LogoMeteo.includes('Dizzle' || 'Mist')){      
+  }else if(LogoMeteo.includes('Dizzle')){      
+    return isDayTime ? <img src={DizzleMistDay} alt="dayClear" /> : <img src={DizzleMistNight} alt="nightClear" />;
+
+  }else if(LogoMeteo.includes( 'Mist')){      
     return isDayTime ? <img src={DizzleMistDay} alt="dayClear" /> : <img src={DizzleMistNight} alt="nightClear" />;
 
   }else if(LogoMeteo.includes('Clouds')){      
     return isDayTime ? <img src={CloudsDay} alt="dayClear" /> : <img src={CloudsNight} alt="nightClear" />;
 
-  }else if(LogoMeteo.includes('Squall' || 'Tornado')){      
+  }else if(LogoMeteo.includes('Squall')){      
+    return isDayTime ? <img src={SquallTornadoDay} alt="dayClear" /> : <img src={SquallTornadoNight} alt="nightClear" />;
+  }
+  else if(LogoMeteo.includes('Tornado')){      
     return isDayTime ? <img src={SquallTornadoDay} alt="dayClear" /> : <img src={SquallTornadoNight} alt="nightClear" />;
   }
   else{
@@ -52,7 +60,7 @@ function weather(){
 
   return (
    <> { City && (
-      <div>
+      <div className={style.weatherLogoContainer}>
       {weather()}
     </div>
   )}

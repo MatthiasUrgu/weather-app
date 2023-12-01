@@ -6,7 +6,6 @@ import style from "./Style.module.scss";
 import CityName from "components/CityName/CityName";
 import Temperature from "components/Temperature/Temperature";
 import DateTime from "components/DateTime/DateTime";
-import video from "assets/videos/heavy-rain.mp4";
 import ExtraDetails from "components/ExtraDetails/ExtraDetails";
 import Hamburger from "components/Hamburger/Hamburger";
 import WeatherLogo from "components/WeatherLogo/WeatherLogo";
@@ -14,42 +13,42 @@ import WeatherLogo from "components/WeatherLogo/WeatherLogo";
 
 function App() {
   /* States */
-  const [isInput, setIsInput] = useState("");
-  const [isVille, setIsVille] = useState("");
-  const [isTemperature, setIsTemperature] = useState("");
-  const [isHumidity, setIsHumidity] = useState("");
-  const [isWind, setIsWind] = useState("");
-  const [isMax, setIsMax] = useState("");
-  const [isMin, setIsMin] = useState("");
+  const [input, setInput] = useState("");
+  const [ville, setVille] = useState("");
+  const [temperature, setTemperature] = useState("");
+  const [humidity, setHumidity] = useState("");
+  const [wind, setWind] = useState("");
+  const [max, setMax] = useState("");
+  const [min, setMin] = useState("");
   const [meteo,setMeteo] = useState("")
 
   /* API */
   async function City() {
-    const ville = await ApiWeather.WeatherCity(isInput);
-    const temperature = await ApiWeather.WeatherTemperature(isInput);
-    const humidity = await ApiWeather.WeatherHumidity(isInput);
-    const wind = await ApiWeather.WeatherWind(isInput);
-    const max = await ApiWeather.WeatherMin(isInput);
-    const min = await ApiWeather.WeatherMax(isInput);
-    const weatherData = await ApiWeather.WeatherImage(isInput);
+    const ville = await ApiWeather.WeatherCity(input);
+    const temperature = await ApiWeather.WeatherTemperature(input);
+    const humidity = await ApiWeather.WeatherHumidity(input);
+    const wind = await ApiWeather.WeatherWind(input);
+    const max = await ApiWeather.WeatherMin(input);
+    const min = await ApiWeather.WeatherMax(input);
+    const weatherData = await ApiWeather.WeatherImage(input);
         
-    
+    /* .Log acces data */
     console.log("**meteoLogo**", weatherData);
-   
-        
-    setIsVille(ville);
-    setIsTemperature(temperature);
-    setIsHumidity(humidity);
-    setIsWind(wind);
-    setIsMax(max);
-    setIsMin(min);
+    
+    
+    setVille(ville);
+    setTemperature(temperature);
+    setHumidity(humidity);
+    setWind(wind);
+    setMax(max);
+    setMin(min);
     setMeteo(weatherData);
   }
-
+   
   /* Animation FramerMotion  */
   const SearchBarControls = useAnimation();
   const HamburgerControls = useAnimation();
-
+   
   function handleSearchBar() {
     SearchBarControls.start({ x: 25, opacity: 1 });
     HamburgerControls.start({ x: 0, opacity: 0 });
@@ -64,23 +63,51 @@ function App() {
 
   /* Input Value */
   function InputValue(e) {
-    setIsInput(e.target.value);
+    setInput(e.target.value);
   }
 
   /* Input KeyPress */
   async function InputKey(e) {
     if (e.key === "Enter") {
-      setIsInput(e.target.value);
+      setInput(e.target.value);
       resetComponents();
       City();
     }
   }
 
-  /* WheaterLogo component  */
+  /* Wheater Background  */
+  
+  let colors= {
+    sun : '#ffb703',
+    night: '#023047',
+    rain: '#219ebc',
+    snow: '#8ecae6'
+}
+  const date = new Date()
+  const hour = date.getHours()
+  
+  const getBackgroundColor = () => {
+    if (hour < 17){
+       return colors.sun;
+    
+    }
+    else{
+      return colors.night;
+    }
+    }
+
+
+  const containerStyle = {
+    backgroundColor: getBackgroundColor(),
+  };
+
+
+
+
 
   
   return (
-    <section className={style.container}>
+    <section className={style.container} style={containerStyle}>
       
       <div className={style.data}>
         <div className={style.dataSearch}>
@@ -91,7 +118,7 @@ function App() {
           >
             <input
               type="text"
-              value={isInput}
+              value={input}
               onChange={InputValue}
               onKeyDown={InputKey}
             />
@@ -111,18 +138,18 @@ function App() {
         </div>
         {/******* All components  *******/}
         <div className={style.dataFind}>
-        <WeatherLogo LogoMeteo={meteo} City={isVille} />
-          <CityName City={isVille} />
-          <Temperature Celcius={isTemperature} />
-          <DateTime City={isVille} />
+          <WeatherLogo LogoMeteo={meteo} City={ville} />
+          <CityName City={ville} />
+          <Temperature Celcius={temperature} />
+          <DateTime City={ville} />
         </div>
         <div className={style.lastBlock}>
           <ExtraDetails
-            Validate={isInput}
-            Humidity={isHumidity}
-            Wind={isWind}
-            Min={isMin}
-            Max={isMax}
+            Validate={ville}
+            Humidity={humidity}
+            Wind={wind}
+            Min={min}
+            Max={max}
           />
         </div>
       </div>
