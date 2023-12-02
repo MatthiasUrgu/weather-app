@@ -89,6 +89,7 @@ function App() {
     sunset: 'linear-gradient(to top, #30cfd0 0%, #330867 100%)',
     morning: 'linear-gradient(to right, #34343 0%, black 100%)'
 }
+
 const user = time
 const split = user.split(' ')
 const userHour =split[1]
