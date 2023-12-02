@@ -1,23 +1,23 @@
 import style from "./DateTimeStyle.module.scss"
-export default function DateTime({City}) {
-  const userDate = new Date();
-
-  const options = {
-    month: 'numeric',
-    day: 'numeric',
-  };
+export default function DateTime({City,TimeZone}) {
   
-  const userDateTime = userDate.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})
-  const userDateToday = userDate.toLocaleDateString(undefined,options)
-  
+  const user = TimeZone
+  const split = user.split(' ')
+  const userHour =split[1]
+  const userDate = split[0]
 
+
+    
   return (
     <>
       
       {City &&(
       <div className={style.date}>
-        <div className={style.dateTime}>{userDateToday}</div>
-        <div>{userDateTime}</div>
+        <div className={style.dateTime}>
+          {userDate}
+        </div>
+        
+        <div>{userHour}</div>
       </div>)}
     </>
   );

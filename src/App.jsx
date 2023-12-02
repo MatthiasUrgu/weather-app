@@ -1,4 +1,5 @@
-import { ApiWeather } from "API/API";
+import { ApiWeather, ApiTimeZone  } from "API/API";
+
 import { useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { BsSearch } from "react-icons/bs";
@@ -21,6 +22,8 @@ function App() {
   const [max, setMax] = useState("");
   const [min, setMin] = useState("");
   const [meteo,setMeteo] = useState("")
+  const [time,setTime] = useState("")
+  
 
   /* API */
   async function City() {
@@ -31,9 +34,9 @@ function App() {
     const max = await ApiWeather.WeatherMin(input);
     const min = await ApiWeather.WeatherMax(input);
     const weatherData = await ApiWeather.WeatherImage(input);
-        
-    /* .Log acces data */
-    console.log("**meteoLogo**", weatherData);
+    const time = await ApiTimeZone.timezone(input);
+    /* .Log acces data you want  */
+    
     
     
     setVille(ville);
@@ -43,6 +46,7 @@ function App() {
     setMax(max);
     setMin(min);
     setMeteo(weatherData);
+    setTime(time)
   }
    
   /* Animation FramerMotion  */
@@ -75,32 +79,43 @@ function App() {
     }
   }
 
+
+
   /* Wheater Background  */
   
   let colors= {
-    sun : '#ffb703',
-    night: '#023047',
-    rain: '#219ebc',
-    snow: '#8ecae6'
+    sun : 'linear-gradient(to right, #4facfe 0%, #00f2fe 100%)',
+    night: 'linear-gradient(to right, #434343 0%, black 100%)',
+    sunset: 'linear-gradient(to top, #30cfd0 0%, #330867 100%)',
+    morning: 'linear-gradient(to right, #34343 0%, black 100%)'
 }
-  const date = new Date()
-  const hour = date.getHours()
+const user = time
+const split = user.split(' ')
+const userHour =split[1]
   
   const getBackgroundColor = () => {
-    if (hour < 17){
+    if (userHour > '08:00:00' && userHour < '16:59:59'){
        return colors.sun;
-    
+    }
+    else if(userHour > '17:00:00' && userHour < '19:00:00'){
+      return colors.sunset
+    }
+    else if(userHour > '19:00:00' && userHour < '23:59:59'){
+      return colors.night
+    }
+    else if(userHour > '00:00:00' && userHour < '07:59:59'){
+      return colors.morning
     }
     else{
-      return colors.night;
+      return '';
     }
     }
-
 
   const containerStyle = {
-    backgroundColor: getBackgroundColor(),
+    backgroundImage: getBackgroundColor(),
   };
 
+  
 
 
 
@@ -141,7 +156,7 @@ function App() {
           <WeatherLogo LogoMeteo={meteo} City={ville} />
           <CityName City={ville} />
           <Temperature Celcius={temperature} />
-          <DateTime City={ville} />
+          <DateTime City={ville} TimeZone={time}/>
         </div>
         <div className={style.lastBlock}>
           <ExtraDetails
