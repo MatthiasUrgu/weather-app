@@ -1,4 +1,4 @@
-import style from "./TemperatureStyle.module.scss";
+import style from "./DegreeStyle.module.scss";
 function Temperature({ Celcius }) {
   return (
     <>

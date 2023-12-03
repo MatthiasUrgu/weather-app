@@ -5,7 +5,7 @@ import { motion, useAnimation } from "framer-motion";
 import { BsSearch } from "react-icons/bs";
 import style from "./Style.module.scss";
 import CityName from "components/CityName/CityName";
-import Temperature from "components/Temperature/Temperature";
+import Degree from "components/Degree/Degree";
 import DateTime from "components/DateTime/DateTime";
 import ExtraDetails from "components/ExtraDetails/ExtraDetails";
 import Hamburger from "components/Hamburger/Hamburger";
@@ -156,7 +156,7 @@ const userHour =split[1]
         <div className={style.dataFind}>
           <WeatherLogo LogoMeteo={meteo} City={ville} />
           <CityName City={ville} />
-          <Temperature Celcius={temperature} />
+          <Degree Celcius={temperature} />
           <DateTime City={ville} TimeZone={time}/>
         </div>
         <div className={style.lastBlock}>
